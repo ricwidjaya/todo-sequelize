@@ -8,6 +8,7 @@ if (process.env.NODE_ENV !== "production") {
 const session = require("express-session")
 const exphbs = require("express-handlebars")
 const methodOverride = require("method-override")
+const routes = require("./routes")
 
 // Init server
 const app = express()
@@ -29,9 +30,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"))
 
 // App
-app.get("/", (req, res) => {
-  res.send("Hello World")
-})
+app.use(routes)
 
 // Start Server
 app.listen(PORT, () => {
