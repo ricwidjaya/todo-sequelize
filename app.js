@@ -6,6 +6,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const session = require("express-session")
+const usePassport = require("./config/passport")
 const exphbs = require("express-handlebars")
 const methodOverride = require("method-override")
 const routes = require("./routes")
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"))
 
 // App
+usePassport(app)
 app.use(routes)
 
 // Start Server
